@@ -76,3 +76,7 @@ ax.scatter(xs, ys, zs)
 ### SAVE SCATTER PLOT TO FOLDER ###
 
 folder_for_plots = dataiku.Folder(output_folder_name)
+
+buffer = io.BytesIO()
+plt.savefig(buffer, format="png")
+folder_for_plots.upload_stream(plot_title + ".png", buffer.getvalue())
